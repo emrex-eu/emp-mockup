@@ -1,0 +1,28 @@
+@(pageTitle: String)
+<!-- Denne fikser HTML5-st&oslash;tte i IE8 --><!--[if lte IE 8]>
+<link href="resources/css/html5reset.css" media="screen" rel="stylesheet" type="text/css" />
+<script>
+    document.createElement('header');
+    document.createElement('nav');
+    document.createElement('section');
+    document.createElement('article');
+    document.createElement('aside');
+    document.createElement('footer');
+</script><![endif]-->
+
+<script>
+	window.funSetup = {};
+	window.funSetup.contextPath = "@routes.Assets.at("/");
+</script>
+
+<title>
+	@pageTitle
+</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript" src="@routes.Assets.at("resources/js/jquery-1.7.2.min_sun.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("resources/js/fun.js?rev=")"></script>
+<script type="text/javascript" src="@routes.Assets.at("resources/js/select2_3.4.1_sun.js")"></script>
+
+<link href="@routes.Assets.at("resources/css/fun.css?rev=")" media="screen" rel="stylesheet" type="text/css" />
+<link href="@routes.Assets.at("resources/css/select2_3.4.1_sun.css")" media="screen" rel="stylesheet" type="text/css" />

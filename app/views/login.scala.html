@@ -1,0 +1,24 @@
+@(loginForm: Form[User])(implicit flash: Flash)
+
+
+@import helper._
+
+@main.default("", false) {
+  <script>
+    window.onload = function() {
+       //$("#").focus()
+    }
+  </script>
+  @flash.get("fail")
+  
+  
+    @helper.form(action = routes.Login.loginUser()) {
+ 		@helper.inputText(loginForm("name"))
+ 		@helper.inputText(loginForm("date"))
+ 		@helper.inputText(loginForm("gender"))
+
+		<input type="submit" name="Login">
+	} 
+		
+  		
+}

@@ -1,0 +1,12 @@
+@(loggedIn:Boolean)
+
+@if(loggedIn) {
+	[
+			[ 'Home', '@routes.Assets.at("/")', 'home', true, []],
+	]
+} else {
+	[
+			[ 'Logg inn', 'login', 'login', true, []]
+	]
+		
+}
