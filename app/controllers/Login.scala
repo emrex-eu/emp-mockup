@@ -13,9 +13,9 @@ object Login extends Controller{
   
  val loginForm = Form(
     mapping(
-      "name" -> text,
-      "date" -> text,
-      "gender" -> text
+      "uid" -> text,
+      "inst" -> text,
+      "name" -> text
     )(User.apply)(User.unapply)
   )
   
@@ -25,9 +25,17 @@ object Login extends Controller{
   def loginUser = Action { implicit request =>
     
     val user = loginForm.bindFromRequest().get
+    val sessionId  = request.session.get("sessionId")
+    val returnUrl = request.session.get("returnUrl")
+
     Redirect(routes.Application.index)
             .flashing(("message" ,"Welcome!" + user.name))
-            .withSession("name" -> user.name, "date" -> user.date, "gender" -> user.gender)
+            .withSession(
+                "name" -> user.name, 
+                "uid" -> user.uid, 
+                "inst" -> user.inst, 
+                "sessionId" -> sessionId.get, 
+                "returnUrl" -> returnUrl.get)
 
     //BadRequest(views.html.login(loginForm, getLoggedInUser(request)))     
   }
@@ -37,7 +45,7 @@ object Login extends Controller{
   }
 
   
-  def LoggedInAction(f: => User => Request[AnyContent] => Result) = {
+  def LoggedInOrRedirectAction(f: => User => Request[AnyContent] => Result) = {
       Authenticated() { user =>
       Action(request => f(user)(request))
     }

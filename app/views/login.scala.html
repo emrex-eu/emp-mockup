@@ -13,9 +13,9 @@
   
   
     @helper.form(action = routes.Login.loginUser()) {
+ 		@helper.inputText(loginForm("uid"))
+ 		@helper.inputText(loginForm("inst"))
  		@helper.inputText(loginForm("name"))
- 		@helper.inputText(loginForm("date"))
- 		@helper.inputText(loginForm("gender"))
 
 		<input type="submit" name="Login">
 	} 

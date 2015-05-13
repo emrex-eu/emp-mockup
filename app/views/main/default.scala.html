@@ -7,14 +7,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		@head(pageTitle)
+		@head(pageTitle) {
+			<script type="text/javascript" src="@routes.Assets.at("resources/js/elmo.js")"></script>
+			<link href="@routes.Assets.at("resources/css/elmo.css")" media="screen" rel="stylesheet" type="text/css" />
+			
+		}
     </head>
 
 	@menuTop(username)			
 
 	<header>
 		<div class="container">
-           	<a href="@routes.Assets.at("/")">
+           	<a href="@routes.Application.index">
            		<img style="float: left; height: 66px;" title="Logo" />
 
         <h1>@pageTitle</h1>
@@ -58,8 +62,8 @@
 
 @kontaktInfo() = {
 <ul>
-	<li>TAM</li>
-	<li>Versjon</li>
-	<li>Epost</li>
+	<li>NCP-mockup</li>
+	<li>Version</li>
+	<li>Email</li>
 </ul>
 }

@@ -1,8 +1,11 @@
 
 GET     /                           controllers.Application.index
+GET     /elmo/                  controllers.Application.getELMO
 
 GET		/login						controllers.Login.login
 GET		/logout						controllers.Login.logout
-GET		/loginUser						controllers.Login.loginUser
+POST	/loginUser						controllers.Login.loginUser
+
+POST	/init					controllers.Application.init
 
 GET     /assets/*file	                  controllers.Assets.at(path="/public/", file)

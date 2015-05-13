@@ -1,4 +1,4 @@
-@(loggedIn: Boolean, name: String)
+@(loggedIn: Boolean, name: String, elmoXML: String, sessionId: String, returnUrl: String)
 
 
 
@@ -6,7 +6,17 @@
 	name,
 	loggedIn
 ) {
-    content
+<form action="@returnUrl" method="POST">
+	<input type="hidden" name="sessionId" value="@sessionId"/>
+	<input type="hidden" id="elmo" name="data" value="@elmoXML"/>
+	<div id="results"></div>
+	<script type="text/javascript">
+		jQuerySun(document).ready(function() {
+			displayXml(true, '12345678901');		
+		})
+	</script>
+	<input type="submit" name="Send data" value="Send data" class="green large"/>
+</form>
     
 }
 
