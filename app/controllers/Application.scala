@@ -45,7 +45,7 @@ object Application extends Controller {
   }
 
   def getELMOSigned(sessionId:String):String = {
-      val xmlString = getELMOFromFile
+      val xmlString = getELMOData
       val cert = getCert()
       val key = getKey()
       val dataResp = new DataResponse(sessionId, cert, key, xmlString, new Date())
