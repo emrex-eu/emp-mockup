@@ -63,9 +63,13 @@ object Application extends Controller {
     val futureString = requestHolder.get() map {response => response.body}
     Await.result(futureString, 5 second)
   }
+  
+  /*
   def getELMOFromFile:String =  {
      getFile(getConfVal("sign.fileLocation"))
   }
+  
+  */
     
     
 

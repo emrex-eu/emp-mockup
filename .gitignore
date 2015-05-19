@@ -8,6 +8,6 @@
 /project/project
 /conf/feide-test-idp.xml
 /conf/keystore.jks
-/conf/*.crt
-/conf/*.key
+/conf/csc*
+/conf/elmo*
 .cache
