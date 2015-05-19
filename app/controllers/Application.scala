@@ -60,7 +60,7 @@ object Application extends Controller {
   def getELMOData:String =  {
     val url = WS.url("https://jboss-test.uio.no/fsrest/rest/elm/report2/2529290201")
     val requestHolder = url.withHeaders("Authorization"->"Basic a3VuX2Zvcl90ZXN0OnRlc3QxMjM0")
-    val futureString = requestHolder.get() map {response => response.body}
+    val futureString = requestHolder.get() map {response => new String(response.body.getBytes, "UTF-8")}
     Await.result(futureString, 5 second)
   }
   
