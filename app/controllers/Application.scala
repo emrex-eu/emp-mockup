@@ -16,6 +16,9 @@ import java.util.concurrent.TimeoutException
 import scala.concurrent.Future
 import scala.concurrent.Await
 import scala.concurrent.duration._
+import encryption.DataResponse
+import encryption.DataSign
+import java.util.Date
 
 object Application extends Controller {
   val logger = LoggerFactory.getLogger(this.getClass)
@@ -25,7 +28,7 @@ object Application extends Controller {
     implicit request =>
       val sessionId = request.session.get("sessionId").get
       val returnUrl= request.session.get("returnUrl").get
-      Ok(views.html.index(true, user.name, getELMOData, sessionId, returnUrl))
+      Ok(views.html.index(true, user.name, getELMOSigned(sessionId), sessionId, returnUrl))
   }
   
   def init = Action {
@@ -41,18 +44,29 @@ object Application extends Controller {
       }
   }
 
-  def getELMO = LoggedInOrRedirectAction { user =>
-    implicit request =>
-      val xmlString = getELMOData
-      Ok(xmlString)
-  }
-  
+  def getELMOSigned(sessionId:String):String = {
+      val xmlString = getELMOFromFile
+      val cert = getCert()
+      val key = getKey()
+      val dataResp = new DataResponse(sessionId, cert, key, xmlString, new Date())
+      val sign = new DataSign
+      val signedString = sign.getSignedElmo(dataResp)
+      logger.info("sign(): " + signedString);
+      logger.info("verifySignature(): " + sign.verifySignature(dataResp.certificate, signedString));
+
+      signedString
+  } 
+
   def getELMOData:String =  {
     val url = WS.url("https://jboss-test.uio.no/fsrest/rest/elm/report2/2529290201")
     val requestHolder = url.withHeaders("Authorization"->"Basic a3VuX2Zvcl90ZXN0OnRlc3QxMjM0")
     val futureString = requestHolder.get() map {response => response.body}
     Await.result(futureString, 5 second)
   }
+  def getELMOFromFile:String =  {
+     getFile(getConfVal("sign.fileLocation"))
+  }
+    
     
 
   def getUserFromSession(request: RequestHeader): Option[User] = {
@@ -71,4 +85,27 @@ object Application extends Controller {
     }
 
   }
+
+  def getCert() = {
+     getFile(getConfVal("sign.certLocation"))
+     
+  }
+  def getKey() = {
+     getFile(getConfVal("sign.keyLocation"))
+    
+  }
+  
+  private def getConfVal(key: String): String = {
+    Play.current.configuration.getString(key)  match {
+      case Some(v) => v
+      case None => throw new Exception("Missing configuration key: " + key)
+    }
+  }
+  private def getFile(filename: String): String = {
+    val file = Play.getFile(filename)
+    val source = scala.io.Source.fromFile(file,"UTF-8")
+    val lines = try source.mkString finally source.close()
+    lines
+  }
+
 }

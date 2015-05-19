@@ -1,6 +1,5 @@
 
 GET     /                           controllers.Application.index
-GET     /elmo/                  controllers.Application.getELMO
 
 GET		/login						controllers.Login.login
 GET		/logout						controllers.Login.logout
