@@ -9,16 +9,20 @@
        //$("#").focus()
     }
   </script>
+  <style>
+	dd{ margin-left: 0;}
+	dl{margin: 0}
+  </style>
   @flash.get("fail")
   
   
     @helper.form(action = routes.Login.loginUser()) {
- 		@helper.inputText(loginForm("givenNames"))
- 		@helper.inputText(loginForm("familyName"))
- 		@helper.inputText(loginForm("birthDate"))
- 		@helper.inputText(loginForm("gender"))
+ 		@helper.inputText(loginForm("Given names"))
+ 		@helper.inputText(loginForm("Family name"))
+ 		@helper.inputText(loginForm("Birth date (dd-mm-yyyy)"))
+ 		@helper.inputText(loginForm("Gender"))
 
-		<input type="submit" name="Login">
+		<input type="submit" value="Login" name="Login" class="green large">
 	} 
 		
   		
