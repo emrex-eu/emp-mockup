@@ -28,7 +28,8 @@ object Application extends Controller {
     implicit request =>
       val sessionId = request.session.get("sessionId").get
       val returnUrl= request.session.get("returnUrl").get
-      Ok(views.html.index(true, user.name, getELMOSigned(sessionId), sessionId, returnUrl))
+      val xmlString = substituteInfo(getELMOData, getUserFromSession(request).get)
+      Ok(views.html.index(true, user.name, signXml(xmlString, sessionId), sessionId, returnUrl))
   }
   
   def init = Action {
@@ -43,9 +44,16 @@ object Application extends Controller {
         BadRequest(views.html.error())
       }
   }
+  def substituteInfo(ELMOData: String, user: User):String = {
+      ELMOData.replaceAll("""<fullName>.*?</fullName>""", "<fullName>"+user.name+"</fullName>")
+      .replaceAll("""<givenNames>.*?</givenNames>""", "<givenNames>"+user.givenNames+"</givenNames>")
+      .replaceAll("""<familyName>.*?</familyName>""", "<familyName>"+user.familyName+"</familyName>")
+      .replaceAll("""<bday .*>.*?</bday>""", """<bday dtf="dd-MM-yyyy">"""+user.birthDate+"</bday>")
+      .replaceAll("""<gender>.*?</gender>""", "<gender>"+user.gender+"</gender>")
+  }
 
-  def getELMOSigned(sessionId:String):String = {
-      val xmlString = getELMOData
+  def signXml(xmlString:String, sessionId:String):String = {
+      
       val cert = getCert()
       val key = getKey()
       val dataResp = new DataResponse(sessionId, cert, key, xmlString, new Date())
@@ -75,15 +83,16 @@ object Application extends Controller {
 
   def getUserFromSession(request: RequestHeader): Option[User] = {
 
-    val uid = request.session.get("uid")
-    val inst = request.session.get("inst")
-    val name = request.session.get("name")
-    getMaybeUser(uid,inst,name)
+    val givenNames = request.session.get("givenNames")
+    val familyName = request.session.get("familyName")
+    val birthDate = request.session.get("birthDate")
+    val gender = request.session.get("gender")
+    getMaybeUser(givenNames, familyName, birthDate, gender)
   }
 
-  def getMaybeUser(uid: Option[String], inst: Option[String], name: Option[String]): Option[User] = {
-    if (name.isDefined && uid.isDefined && inst.isDefined) {
-      Some(User(uid.get, inst.get, name.get))
+  def getMaybeUser(givenNames: Option[String], familyName: Option[String], birthDate: Option[String], gender: Option[String]): Option[User] = {
+    if (birthDate.isDefined && givenNames.isDefined && familyName.isDefined && gender.isDefined) {
+      Some(User(givenNames.get, familyName.get, birthDate.get, gender.get))
     } else {
       None
     }
@@ -111,5 +120,6 @@ object Application extends Controller {
     val lines = try source.mkString finally source.close()
     lines
   }
+
 
 }

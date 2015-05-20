@@ -13,9 +13,10 @@ object Login extends Controller{
   
  val loginForm = Form(
     mapping(
-      "uid" -> text,
-      "inst" -> text,
-      "name" -> text
+      "givenNames" -> text,
+      "familyName" -> text,
+      "birthDate" -> text,
+      "gender" -> text
     )(User.apply)(User.unapply)
   )
   
@@ -31,9 +32,10 @@ object Login extends Controller{
     Redirect(routes.Application.index)
             .flashing(("message" ,"Welcome!" + user.name))
             .withSession(
-                "name" -> user.name, 
-                "uid" -> user.uid, 
-                "inst" -> user.inst, 
+                "givenNames" -> user.givenNames, 
+                "familyName" -> user.familyName, 
+                "birthDate" -> user.birthDate,
+                "gender" -> user.gender, 
                 "sessionId" -> sessionId.get, 
                 "returnUrl" -> returnUrl.get)
 

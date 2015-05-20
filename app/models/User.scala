@@ -1,3 +1,6 @@
 package models
 
-case class User(uid:String, inst:String, name:String)
+case class User(givenNames:String, familyName:String, birthDate:String, gender:String) {
+  def name = givenNames + " " +familyName
+}
+
