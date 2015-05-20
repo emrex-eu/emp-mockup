@@ -17,10 +17,10 @@
   
   
     @helper.form(action = routes.Login.loginUser()) {
- 		@helper.inputText(loginForm("Given names"))
- 		@helper.inputText(loginForm("Family name"))
- 		@helper.inputText(loginForm("Birth date (dd-mm-yyyy)"))
- 		@helper.inputText(loginForm("Gender"))
+ 		@helper.inputText(loginForm("givenNames"),'_label->"Given names")
+ 		@helper.inputText(loginForm("familyName"),'_label->"Family name")
+ 		@helper.inputText(loginForm("birthDate"),'_label->"Birth date (dd-mm-yyyy)")
+ 		@helper.inputText(loginForm("gender"),'_label-> "Gender")
 
 		<input type="submit" value="Login" name="Login" class="green large">
 	} 
