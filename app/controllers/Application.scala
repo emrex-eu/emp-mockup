@@ -28,7 +28,7 @@ object Application extends Controller {
     implicit request =>
       val sessionId = request.session.get("sessionId").get
       val returnUrl= request.session.get("returnUrl").get
-      val xmlString = substituteInfo(getELMOData, getUserFromSession(request).get)
+      val xmlString = substituteInfo(getELMOFromFile, getUserFromSession(request).get)
       Ok(views.html.index(true, user.name, signXml(xmlString, sessionId), sessionId, returnUrl))
   }
   
@@ -65,19 +65,17 @@ object Application extends Controller {
       signedString
   } 
 
+/*
   def getELMOData:String =  {
     val url = WS.url("https://jboss-test.uio.no/fsrest/rest/elm/report2/2529290201")
     val requestHolder = url.withHeaders("Authorization"->"Basic a3VuX2Zvcl90ZXN0OnRlc3QxMjM0")
     val futureString = requestHolder.get() map {response => new String(response.body.getBytes, "UTF-8")}
     Await.result(futureString, 30 second)
   }
-  
-  /*
-  def getELMOFromFile:String =  {
-     getFile(getConfVal("sign.fileLocation"))
-  }
-  
   */
+  def getELMOFromFile:String =  {
+     getFile("conf/elmo_example.xml")
+  }
     
     
 
