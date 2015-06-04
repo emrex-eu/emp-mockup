@@ -1,0 +1,94 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+#results table {
+	border-spacing: 0;
+}
+
+#results th.issuer {
+	background: #1684a9; 
+	color: #fff;
+}
+
+#results th {
+	padding: 11px 15px 5px 15px;
+	border-top: 1px solid #caced5;
+	height: 40px;
+	text-align: left;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+#results .degree {
+	background-color: #f1f1f1;
+}
+
+#results .degree .descr {
+	font-weight: normal;
+	display: none;
+}
+
+
+#results td {
+	padding: 6px 15px 0 15px;
+	border-top: 1px solid #caced5;
+	height: 30px;
+	vertical-align: top;
+}
+
+#results .check {
+	padding: 5px 0 0 15px;
+	text-align: center;
+}
+
+#results th.check {
+	padding-top: 10px;
+}
+
+td.emnekode {
+	white-space: nowrap;
+}
+
+#results td.creds {
+	text-align: right;
+	padding-right: 10px;
+}
+
+#results td.scheme {
+	padding-left: 0;
+}
+
+#results tr.partOnly td {
+	font-size: 14px;
+	color: #888;
+	height: 20px;
+	border: 0;
+	padding-top: 0;
+}
+
+#results .descr {
+	display: none;
+	margin: 5px 0 5px 0;
+}
+
+#results .attachment {
+	margin: 10px 0 0 0;
+}
+
+#results a {
+	color: #0f6a88;
+	text-decoration: none;
+	border-bottom: 1px dotted #0f6a88;
+	cursor: pointer;
+}
+
+#fetch {
+	margin-top: 20px;
+}
+
+#selectedElmoIds {
+	margin-top: 10px;
+	font-size: 12px;
+	color: #888;
+}

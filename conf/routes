@@ -1,0 +1,11 @@
+
+GET     /                           controllers.Application.index
+
+GET		/login						controllers.Login.login
+GET		/logout						controllers.Login.logout
+POST	/loginUser						controllers.Login.loginUser
+
+POST	/init					controllers.Application.init
+GET		/init					controllers.Application.init
+
+GET     /assets/*file	                  controllers.Assets.at(path="/public/", file)

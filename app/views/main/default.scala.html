@@ -1,0 +1,69 @@
+@(username: String,loggetIn: Boolean)(content: Html)
+
+	@html("NCP Mockup", "Proof of concept") 
+
+
+@html(pageTitle: String, pageSubtitle: String) = {
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		@head(pageTitle) {
+			<script type="text/javascript" src="@routes.Assets.at("resources/js/elmo.js")"></script>
+			<link href="@routes.Assets.at("resources/css/elmo.css")" media="screen" rel="stylesheet" type="text/css" />
+			
+		}
+    </head>
+
+	@menuTop(username)			
+
+	<header>
+		<div class="container">
+           	<a href="@routes.Application.index">
+           		<img src="@routes.Assets.at("resources/img/flag_no.png")" class="logo" style="float: left; height: 66px;" title="Logo" />
+
+        <h1>@pageTitle</h1>
+		<h2>@pageSubtitle</h2>
+			</a>
+		</div>
+	</header>
+
+	<div class="container">
+	
+		<!--  Menu venstre  --> 
+		<nav id="menuBar">		
+			<script>
+	
+				var menuitems = @menuLeft(loggetIn);
+				createMenu(null, menuitems, '@routes.Assets.at("/")', '/', '');
+	
+			</script>
+
+		</nav>
+		
+	
+		<!-- Innhold -->
+		<section>
+	      <div id="canvas"><span id="messagesPanelGroup"></span>	
+	    	<div id="content">
+	    		@content
+	    	</div>
+	      </div>
+		</section>
+	</div>
+    <footer>
+		<div class="container">
+			@kontaktInfo()	
+		</div>
+	</footer>
+
+</html>
+}
+
+
+@kontaktInfo() = {
+<ul>
+	<li>NCP-mockup</li>
+	<li>Version</li>
+	<li>Email</li>
+</ul>
+}

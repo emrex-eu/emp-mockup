@@ -1,0 +1,13 @@
+.classpath
+.project
+.settings
+/target
+/logs
+/bin
+/project/target
+/project/project
+/conf/feide-test-idp.xml
+/conf/keystore.jks
+/conf/csc*
+/conf/elmo*
+.cache
