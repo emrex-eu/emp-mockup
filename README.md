@@ -1,5 +1,15 @@
-# ncp-mockup
+# ncp-mockup (a scala play application)
 A mockup of an NCP, can be used to test clients
+
+install sbt first
+
+It depends on another project funScala. Checkout funScala and run
+sbt publishLocal
+to install the necessary dependency
+
+To start the server:
+sbt run
+
 
 Documentation of how an NCP should work is here
 https://confluence.csc.fi/display/EMREX/Implementation+details%3A+NCP
