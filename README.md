@@ -1,5 +1,8 @@
-# ncp-mockup
+# ncp-mockup (a scala play application)
 A mockup of an NCP, can be used to test clients
+
+install sbt first and run with 
+sbt run
 
 Documentation of how an NCP should work is here
 https://confluence.csc.fi/display/EMREX/Implementation+details%3A+NCP
