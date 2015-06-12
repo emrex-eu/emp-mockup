@@ -1,0 +1,660 @@
+/*
+Version: @@ver@@ Timestamp: @@timestamp@@
+*/
+.select2-container {
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    /* inline-block for ie7 */
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+}
+
+.select2-container,
+.select2-drop,
+.select2-search,
+.select2-search input{
+  /*
+    Force border-box so that % widths fit the parent
+    container without overlap because of margin/padding.
+
+    More Info : http://www.quirksmode.org/css/box.html
+  */
+  -webkit-box-sizing: border-box; /* webkit */
+   -khtml-box-sizing: border-box; /* konqueror */
+     -moz-box-sizing: border-box; /* firefox */
+      -ms-box-sizing: border-box; /* ie */
+          box-sizing: border-box; /* css3 */
+          
+       margin-bottom: 20px; /*Daniel*/
+}
+
+.select2-container .select2-choice { /*Daniel: This is the single select default*/
+    display: block;
+    height: 37px; /*Daniel*/
+    padding: 0 0 0 8px;
+    overflow: hidden;
+    position: relative;
+
+    border: 1px solid #a0a0a0; /*Daniel*/
+    white-space: nowrap;
+    line-height: 37px; /*Daniel*/
+    color: #444;
+    text-decoration: none;
+
+    -webkit-border-radius: 1px; /*Daniel*/
+       -moz-border-radius: 1px; /*Daniel*/
+            border-radius: 1px; /*Daniel*/
+
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+    background-color: #f9f9f9; /*Daniel*/
+    box-shadow: 0 3px 5px #EBEBEB inset; /*Daniel*/
+    /*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(0.5, white));
+    background-image: -webkit-linear-gradient(center bottom, #eeeeee 0%, white 50%);
+    background-image: -moz-linear-gradient(center bottom, #eeeeee 0%, white 50%);
+    background-image: -o-linear-gradient(bottom, #eeeeee 0%, #ffffff 50%);
+    background-image: -ms-linear-gradient(top, #ffffff 0%, #eeeeee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
+    background-image: linear-gradient(top, #ffffff 0%, #eeeeee 50%);*/
+}
+
+.select2-container.select2-drop-above .select2-choice { /*Daniel: I have no idea when this is used*/
+    border-bottom-color: #a0a0a0; /*Daniel*/
+
+    -webkit-border-radius:0 0 1px 1px; /*Daniel*/
+       -moz-border-radius:0 0 1px 1px; /*Daniel*/
+            border-radius:0 0 1px 1px; /*Daniel*/
+
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ebebeb), color-stop(0.9, #f9f9f9)); /*Daniel*/
+    background-image: -webkit-linear-gradient(center bottom, #ebebeb 0%, #f9f9f9 90%); /*Daniel*/
+    background-image: -moz-linear-gradient(center bottom, #ebebeb 0%, #f9f9f9 90%); /*Daniel*/
+    background-image: -o-linear-gradient(bottom, #ebebeb 0%, #f9f9f9 90%); /*Daniel*/
+    background-image: -ms-linear-gradient(top, #ebebeb 0%,#f9f9f9 90%); /*Daniel*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ebebeb',GradientType=0 ); /*Daniel*/
+    background-image: linear-gradient(top, #ebebeb 0%,#f9f9f9 90%); /*Daniel*/
+}
+
+.select2-container.select2-allowclear .select2-choice .select2-chosen {
+    margin-right: 42px;
+}
+
+.select2-container .select2-choice > .select2-chosen {
+    margin-right: 26px;
+    display: block;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    -ms-text-overflow: ellipsis;
+     -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+}
+
+.select2-container .select2-choice abbr { /*Daniel: This is the little x to clear the single select*/
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 24px;
+    top: 12px; /*Daniel*/
+
+    font-size: 1px;
+    text-decoration: none;
+
+    border: 0;
+    background: url('../img/select2.png') right top no-repeat;
+    cursor: pointer;
+    outline: 0;
+}
+
+.select2-container.select2-allowclear .select2-choice abbr {
+    display: inline-block;
+}
+
+.select2-container .select2-choice abbr:hover {
+    background-position: right -11px;
+    cursor: pointer;
+}
+
+.select2-drop-undermask {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9998;
+    background-color: transparent;
+    filter: alpha(opacity=0);
+}
+
+.select2-drop-mask {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9998;
+    /* styles required for IE to work */
+    background-color: #fff;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.select2-drop { /*Daniel: This is the default for all dropdowns, single or multi*/
+    width: 100%;
+    margin-top: -1px;
+    position: absolute;
+    z-index: 9999;
+    top: 100%;
+
+    background: #f9f9f9; /*Daniel*/
+    color: #000;
+    border: 1px solid #a0a0a0; /*Daniel*/
+    border-top: 0;
+
+    -webkit-border-radius: 0 0 1px 1px; /*Daniel*/
+       -moz-border-radius: 0 0 1px 1px; /*Daniel*/
+            border-radius: 0 0 1px 1px; /*Daniel*/
+
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+       -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+            box-shadow: 0 4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+}
+
+.select2-drop-auto-width {
+    border-top: 1px solid #a0a0a0; /*Daniel*/
+    width: auto;
+}
+
+.select2-drop-auto-width .select2-search {
+    padding-top: 4px;
+}
+
+.select2-drop.select2-drop-above { /*Daniel: This is the dropdown (single/multi) when it is shown ABOVE the field*/
+    margin-top: 1px;
+    border-top: 1px solid #a0a0a0; /*Daniel*/
+    border-bottom: 0;
+
+    -webkit-border-radius: 1px 1px 0 0; /*Daniel*/
+       -moz-border-radius: 1px 1px 0 0; /*Daniel*/
+            border-radius: 1px 1px 0 0; /*Daniel*/
+
+    -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+       -moz-box-shadow: 0 -4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+            box-shadow: 0 -4px 5px rgba(0, 0, 0, .3); /*Daniel*/
+}
+
+.select2-drop-active {
+    border: 1px solid #a0a0a0; /*Daniel*/
+    border-top: none;
+}
+
+.select2-drop.select2-drop-above.select2-drop-active {
+    border-top: 1px solid #a0a0a0; /*Daniel*/
+}
+
+.select2-container .select2-choice .select2-arrow { /*Daniel: This is the field with the arrow on the side of the single select field*/
+    display: inline-block;
+    width: 18px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    border-left: 1px solid #a0a0a0; /*Daniel*/
+    -webkit-border-radius: 0 1px 1px 0; /*Daniel*/
+       -moz-border-radius: 0 1px 1px 0; /*Daniel*/
+            border-radius: 0 1px 1px 0; /*Daniel*/
+
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;
+
+    background: #ccc;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
+    background-image: -webkit-linear-gradient(center bottom, #ccc 0%, #eee 60%);
+    background-image: -moz-linear-gradient(center bottom, #ccc 0%, #eee 60%);
+    background-image: -o-linear-gradient(bottom, #ccc 0%, #eee 60%);
+    background-image: -ms-linear-gradient(top, #cccccc 0%, #eeeeee 60%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eeeeee', endColorstr = '#cccccc', GradientType = 0);
+    background-image: linear-gradient(top, #cccccc 0%, #eeeeee 60%);
+}
+
+.select2-container .select2-choice .select2-arrow b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url('../img/select2.png') no-repeat 0 6px; /*Daniel: Positioning the little arrow*/
+}
+
+.select2-search { /*Daniel: This is the area AROUND the popup search input box in single select*/
+    display: inline-block;
+    width: 100%;
+    min-height: 26px;
+    margin: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    position: relative;
+    z-index: 10000;
+
+    white-space: nowrap;
+}
+
+.select2-search input { /*Daniel: This is the input field in said popup search box in single select. OBS: Overridden by "input[...]" in fun.css, using !important to re-override*/
+    width: 100%;
+    height: auto !important;
+    min-height: 26px;
+    padding: 4px 20px 4px 5px;
+    margin: 0;
+
+    outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+
+    border: 1px solid #a0a0a0; /*Daniel*/
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+
+    -webkit-box-shadow: 0 3px 5px #EBEBEB inset; /*Daniel*/
+       -moz-box-shadow: 0 3px 5px #EBEBEB inset; /*Daniel*/
+            box-shadow: 0 3px 5px #EBEBEB inset; /*Daniel*/
+
+	background-color: #f9f9f9 !important; /*Daniel*/
+	background: #f9f9f9 url("../img/icons_d/24x24/Search-24x24.png") no-repeat scroll 99% 5px !important; /*Daniel: The magnifying glass for search*/
+}
+
+.select2-drop.select2-drop-above .select2-search input {
+    margin-top: 4px;
+}
+
+.select2-search input.select2-active { /*Daniel: This is the spinner in the single-select search input when it's searching*/
+    background: #f9f9f9 url('spinner.gif') no-repeat 99% !important; /*Daniel*/
+    /*background: url('spinner.gif') no-repeat 99%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #f9f9f9), color-stop(0.99, #ebebeb));
+    background: url('spinner.gif') no-repeat 99%, -webkit-linear-gradient(center bottom, #f9f9f9 85%, #ebebeb 99%);
+    background: url('spinner.gif') no-repeat 99%, -moz-linear-gradient(center bottom, #f9f9f9 85%, #ebebeb 99%);
+    background: url('spinner.gif') no-repeat 99%, -o-linear-gradient(bottom, #f9f9f9 85%, #ebebeb 99%);
+    background: url('spinner.gif') no-repeat 99%, -ms-linear-gradient(top, #f9f9f9 85%, #ebebeb 99%);
+    background: url('spinner.gif') no-repeat 99%, linear-gradient(top, #f9f9f9 85%, #ebebeb 99%);*/
+}
+
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+    border: 1px solid #a0a0a0; /*Daniel*/
+    outline: none;
+
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel*/;
+       -moz-box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel*/;
+            box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel*/;
+}
+
+.select2-dropdown-open .select2-choice { /*Daniel: Single select. This is what the original element turns into when its dropdown is open. Mostly overriden by ".select2-container .select2-choice" */
+    border-bottom-color: transparent;
+    /*-webkit-box-shadow: 0 1px 0 #fff inset;
+       -moz-box-shadow: 0 1px 0 #fff inset;
+            box-shadow: 0 1px 0 #fff inset; Daniel: Leave it as it already is when "-active"*/
+
+    -webkit-border-bottom-left-radius: 0;
+        -moz-border-radius-bottomleft: 0;
+            border-bottom-left-radius: 0;
+
+    -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-bottomright: 0;
+            border-bottom-right-radius: 0;
+
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, white), color-stop(0.5, #eeeeee));
+    background-image: -webkit-linear-gradient(center bottom, white 0%, #eeeeee 50%);
+    background-image: -moz-linear-gradient(center bottom, white 0%, #eeeeee 50%);
+    background-image: -o-linear-gradient(bottom, white 0%, #eeeeee 50%);
+    background-image: -ms-linear-gradient(top, #ffffff 0%,#eeeeee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 );
+    background-image: linear-gradient(top, #ffffff 0%,#eeeeee 50%);
+}
+
+.select2-dropdown-open.select2-drop-above .select2-choice,
+.select2-dropdown-open.select2-drop-above .select2-choices { /*Daniel: Multi/single. This is the original element, the search field, when the dropdown is shown above. OBS: For single this is overridden by (the gradients in) ".select2-container .select2-choice", ".select2-dropdown-open .select2-choice" and ".select2-container.select2-drop-above .select2-choice"*/
+    border: 1px solid #a0a0a0; /*Daniel*/
+    border-top-color: transparent;
+
+    /*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(0.5, #eeeeee));
+    background-image: -webkit-linear-gradient(center top, white 0%, #eeeeee 50%);
+    background-image: -moz-linear-gradient(center top, white 0%, #eeeeee 50%);
+    background-image: -o-linear-gradient(top, white 0%, #eeeeee 50%);
+    background-image: -ms-linear-gradient(bottom, #ffffff 0%,#eeeeee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#ffffff',GradientType=0 );
+    background-image: linear-gradient(bottom, #ffffff 0%,#eeeeee 50%);*/
+}
+
+.select2-dropdown-open .select2-choice .select2-arrow {
+    background: transparent;
+    border-left: none;
+    filter: none;
+}
+.select2-dropdown-open .select2-choice .select2-arrow b {
+    background-position: -18px 6px; /*Daniel: This is the up-arrow in an opened single select*/
+}
+
+/* results */
+.select2-results {
+    max-height: 200px;
+    padding: 0 0 0 4px;
+    margin: 4px 4px 4px 0;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.select2-results ul.select2-result-sub {
+    margin: 0;
+    padding-left: 0;
+}
+
+.select2-results ul.select2-result-sub > li .select2-result-label { padding-left: 20px }
+.select2-results ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 40px }
+.select2-results ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 60px }
+.select2-results ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 80px }
+.select2-results ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 100px }
+.select2-results ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 110px }
+.select2-results ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub ul.select2-result-sub > li .select2-result-label { padding-left: 120px }
+
+.select2-results li {
+    list-style: none;
+    display: list-item;
+    background-image: none;
+}
+
+.select2-results li.select2-result-with-children > .select2-result-label {
+    font-weight: bold;
+}
+
+.select2-results .select2-result-label {
+    padding: 3px 7px 4px;
+    margin: 0;
+    cursor: pointer;
+
+    min-height: 1em;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.select2-results .select2-highlighted {
+    background: #0087AB; /*Daniel*/
+    color: #fff;
+}
+
+.select2-results li em {
+    background: #feffde;
+    font-style: normal;
+}
+
+.select2-results .select2-highlighted em {
+    background: transparent;
+}
+
+.select2-results .select2-highlighted ul {
+    background: white;
+    color: #000;
+}
+
+
+.select2-results .select2-no-results,
+.select2-results .select2-searching,
+.select2-results .select2-selection-limit { /*Daniel: This is the little box that says "Type 3 or more..." and "Searching..." etc.*/
+    /*background: #f4f4f4;Daniel*/
+    display: list-item;
+}
+
+/*
+disabled look for disabled choices in the results dropdown
+*/
+.select2-results .select2-disabled.select2-highlighted {
+     display: none; /* Disabled styles m� v�re none hvis ikke blir allerede valgte elementer fortsatt vist i den forh�ndsvalgte listen */
+}
+
+.select2-results .select2-disabled {
+ display: none; /* Disabled styles m� v�re none hvis ikke blir allerede valgte elementer fortsatt vist i den forh�ndsvalgte listen */
+}
+
+.select2-results .select2-selected {
+    display: none;
+}
+
+.select2-more-results.select2-active {
+    background: #f4f4f4 url('spinner.gif') no-repeat 100%; /*Daniel*/
+}
+
+.select2-more-results {
+    background: #f4f4f4;
+    display: list-item;
+}
+
+/* disabled styles */
+
+.select2-container.select2-container-disabled .select2-choice {
+    background-color: #f4f4f4;
+    background-image: none;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+.select2-container.select2-container-disabled .select2-choice .select2-arrow {
+    background-color: #f4f4f4;
+    background-image: none;
+    border-left: 0;
+}
+
+.select2-container.select2-container-disabled .select2-choice abbr {
+    display: none;
+}
+
+
+/* multiselect */
+
+.select2-container-multi .select2-choices { /*Daniel: A bit unintuitive: This is the original/default look of a multiselect field before one clicks anything*/
+    height: auto !important;
+    height: 1%;
+    margin: 0;
+    padding: 0;
+    padding-right: 5px; /*Daniel*/
+    position: relative;
+
+    border: 1px solid #a0a0a0; /*Daniel*/
+    cursor: text;
+    overflow: hidden;
+
+    background-color: #f9f9f9; /*Daniel*/
+    box-shadow: 0 3px 5px #EBEBEB inset; /*Daniel*/
+    /*background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, #ff0000), color-stop(15%, #f9f9f9));
+    background-image: -webkit-linear-gradient(top, #ff0000eb 1%, #f9f9f9 15%);
+    background-image: -moz-linear-gradient(top, #ff0000eb 1%, #f9f9f9 15%);
+    background-image: -o-linear-gradient(top, #ff0000eb 1%, #f9f9f9 15%);
+    background-image: -ms-linear-gradient(top, #ff0000eb 1%, #f9f9f9 15%);
+    background-image: linear-gradient(top, #ff0000eb 1%, #f9f9f9 15%);*/
+}
+
+.select2-locked {
+  padding: 3px 5px 3px 5px !important;
+}
+
+.select2-container-multi .select2-choices {
+    min-height: 26px;
+}
+
+.select2-container-multi.select2-container-active .select2-choices { /*Daniel: The originalk multiselect field when it has focus ("...-active")*/
+    border: 1px solid #a0a0a0; /*Daniel*/
+    outline: none;
+
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel: shadow outside AND inside*/;
+       -moz-box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel*/;
+            box-shadow: 0 0 5px rgba(0,0,0,.3),0 3px 5px #EBEBEB inset; /*Daniel*/;
+}
+.select2-container-multi .select2-choices li {
+    float: left;
+    list-style: none;
+}
+.select2-container-multi .select2-choices .select2-search-field {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input {
+    padding: 6px; /*Daniel*/
+    margin: 1px 0;
+
+    font-family: sans-serif;
+    font-size: 100%;
+    color: #666;
+    outline: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    background: transparent !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input.select2-active {
+    background: #f9f9f9 url('spinner.gif') no-repeat 100% !important; /*Daniel: This is the spinner in the multiselect*/
+}
+
+.select2-default {
+    color: #999 !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+  /*Daniel*/
+  -webkit-border-radius: 3px;
+  -moz-border-radius   : 3px;
+  border-radius        : 3px;
+  -moz-background-clip   : padding;
+  -webkit-background-clip: padding-box;
+  background-clip        : padding-box;
+  background-color: #e4e4e4;
+
+  color: #444;
+  border: 1px solid #a0a0a0; /*Daniel*/
+  line-height: 19px; /*Daniel*/
+  padding: 3px 5px 3px 18px;
+  margin: 3px 0 3px 5px;
+  position: relative;
+  cursor: default;
+}
+.select2-container-multi .select2-choices .select2-search-choice .select2-chosen {
+    cursor: default;
+}
+.select2-container-multi .select2-choices .select2-search-choice-focus {
+    background: #d4d4d4;
+}
+
+.select2-search-choice-close { /*Daniel: This is the little x on the tags to remove choices*/
+    display: block;
+    width: 12px;
+    height: 13px;
+    position: absolute;
+    right: 3px;
+    top: 6px; /*Daniel*/
+
+    font-size: 1px;
+    outline: none;
+    background: url('../img/select2.png') right top no-repeat;
+}
+
+.select2-container-multi .select2-search-choice-close {
+    left: 3px;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
+  background-position: right -11px;
+}
+.select2-container-multi .select2-choices .select2-search-choice-focus .select2-search-choice-close {
+    background-position: right -11px;
+}
+
+/* disabled styles */
+.select2-container-multi.select2-container-disabled .select2-choices{
+    background-color: #f4f4f4;
+    background-image: none;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice {
+    padding: 3px 5px 3px 5px;
+    border: 1px solid #ddd;
+    background-image: none;
+    background-color: #f4f4f4;
+}
+
+.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice .select2-search-choice-close {    display: none;
+    background:none;
+}
+/* end multiselect */
+
+
+.select2-result-selectable .select2-match,
+.select2-result-unselectable .select2-match {
+    text-decoration: underline;
+}
+
+.select2-offscreen, .select2-offscreen:focus {
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+    outline: 0;
+    left: 0px;
+}
+
+.select2-display-none {
+    display: none;
+}
+
+.select2-measure-scrollbar {
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    width: 100px;
+    height: 100px;
+    overflow: scroll;
+}
+
+
+/* Retina-ize icons */
+
+/*
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)  {
+  .select2-search input, .select2-search-choice-close, .select2-container .select2-choice abbr, .select2-container .select2-choice .select2-arrow b {
+      background-image: url('select2x2.png') !important;
+      background-repeat: no-repeat !important;
+      background-size: 60px 40px !important;
+  }
+  .select2-search input {
+      background-position: 100% -21px !important;
+  }
+}
+*/

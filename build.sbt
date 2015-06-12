@@ -10,8 +10,6 @@ scalaVersion := "2.11.6"
 
 
 libraryDependencies ++= Seq(
-  "no.fsat" %% "fun" % "1.0-SNAPSHOT" ,
-  "no.fsat" %% "fun" % "1.0-SNAPSHOT" classifier "assets",
   cache,
   ws
 )

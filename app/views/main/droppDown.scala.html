@@ -1,0 +1,9 @@
+@(header:String)(body: Html) 
+	<div class="dropdown">
+		<a class="dropdown-link arrow" href="#">
+			@Html(header)
+		</a>
+		<div class="dropdown-wrapper">
+			@body
+		</div>
+	</div>

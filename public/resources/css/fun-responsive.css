@@ -1,0 +1,196 @@
+/* SUN FUN-RESPONSIVE ver 1.0-SNAPSHOT, rev -1 */
+
+
+/* Alle nettlesere med mindre enn 1280px */
+
+@media screen and (max-width: 1280px) {
+
+	div#bar {
+		width: auto;
+	}
+	
+	div.container {
+		width: 100%;
+	}
+	
+	div.container section {
+		padding: 0;
+		margin: 10px 10px 0 10px;
+		width: auto;
+		clear: both;
+		min-height: initial;
+	}
+	
+
+	/* FOOTER */
+	
+	body > footer {
+		padding: 10px;
+	}
+	
+	body > footer ul {
+		margin-left: 0;
+		padding-left: 0;
+	}
+	
+}
+
+	
+/* Tablets */
+
+@media screen and (max-width: 1280px) and (min-width: 15.5cm) {
+	
+	nav {
+		width: auto;
+	}
+	
+	nav > ul > li {
+		display: inline-block;
+		vertical-align: top;
+		width: auto;
+	}
+	
+	
+	nav > ul > li > a, nav > ul > li > span {
+		padding: 8px 20px 8px 20px;
+		background: none;
+	}
+	
+	nav > ul > li.active > a,
+	nav > ul > li.active > a:hover,
+	nav > ul > li.active > a.expanded,
+	nav > ul > li.active > span.expanded,
+	nav > ul > li.active > span,
+	nav > ul > li.active > span:hover {
+		/*
+		background-image: url('../img/li_open_blue.png');
+		background-position: right 10px center; 
+		background-repeat: no-repeat;
+		*/
+	}
+	
+	
+	/* SUBMENU */
+
+	nav > ul > li > ul.default-open {
+		display: none;
+	}
+	
+	
+	nav > ul > li > ul {
+		position: absolute;
+		background-color: #ffffff;
+		border: solid 1px #d2d6dd;
+		border-top: none;
+		width: inherit;
+		margin-top: 1px;
+		padding: 8px 0 8px 0px;
+		z-index: 999;
+	}
+	
+	nav > ul > li > ul > li > a {
+		padding: 5px 30px 5px 20px;
+	}
+	
+	
+}
+
+
+/* Mobiltelefoner */
+
+@media screen and (max-width: 15.5cm) {
+
+	/* BAR */
+	
+	div#bar a, div#bar a:hover {
+		padding-left: 10px;
+	}
+	
+	div#bar .dropdown .dropdown-link,
+	div#bar .dropdown .dropdown-link.active {
+		padding-left: 10px;
+		color: transparent;
+		max-width: 66px;
+	}
+		
+	div#bar .dropdown .dropdown-wrapper {
+		padding: 5px 5px;
+	}
+	
+	div#bar .dropdown .dropdown-wrapper.active {
+		display: table;
+		min-width: 66px;
+	}
+	
+	div#bar .dropdown .dropdown-wrapper ul li {
+		white-space: nowrap;
+	}
+
+
+	/* HEADER */
+	
+	body > header {
+		width: 100%;
+		padding: 10px 0 0 10px;
+	}
+	
+	body > header h1 {
+		font-size: 24px;
+	}
+
+	body > header h2 {
+		font-size: 16px;
+	}
+	
+	
+	/* MENU */
+
+	#bar #menuOpener {
+		display: block;
+		background: url('../img/icon-menu-40x40.png'); /* #0087ab;*/
+		width: 46px;
+		height: 40px;
+		float: left;
+		margin-left: 3px;
+		cursor: pointer;
+	}
+	
+	nav {
+		display: none;
+		position: absolute;
+		/*border: solid 1px #4c4c4c;*/
+		z-index: 999;
+		top: 40px;
+		box-shadow: 0px 2px 2px #444;
+		-moz-box-shadow: 0px 2px 2px #444;
+		-webkit-box-shadow: 0px 2px 2px #444;
+	}
+	
+	nav > ul {
+		margin-bottom: -1px;
+	}
+	
+	nav > ul > li {
+		border-right: none;
+	}
+	
+}
+
+@media screen and (max-width: 815px) {
+	
+	/* LOGIN MODULE */
+
+	
+	div#login-flaps {
+		display: none;
+	}
+	
+	div#login-box {
+		display: block;
+		width: 100%;
+	}
+	
+	div.login-module-box {
+		width: 100%;
+	}
+}

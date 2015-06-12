@@ -1,0 +1,53 @@
+/* ICON BUTTONS */
+
+input.small.iconButton, button.small.iconButton, .small.iconButton {
+	text-align: left;
+	background-repeat: no-repeat;
+	padding-left: 26px;
+	background-position: 5px;
+}
+
+input.small.iconButton.iconRight, button.small.iconButton.iconRight, .small.iconButton.iconRight {
+	padding-left: 10px;
+	padding-right: 26px;
+	background-position: right 5px top 1px;
+}
+
+.small.iconButton.icon24 {
+	background-position: 1px;
+}
+
+.small.iconButton.iconRight.icon24 {
+	background-position: right 3px top 1px;
+}
+
+
+.medium.iconButton {
+	text-align: left;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	background-position: 8px;
+}
+
+.iconButtonContainer {
+	display: table-cell;
+}
+.iconButtonContainer .iconButton {
+	width: 100%;
+}
+
+/* Ikonklasser - sortert alfabetisk */
+
+.addIcon 		{ background-image: url('../img/icons_b/16x16/Add-16x16.png') }
+.arrowUpIcon	{ background-image: url('../img/icons_b/16x16/Arrow-up-16x16.png') }
+.calendarIcon	{ background-image: url('../img/icons_b/16x16/Calendar-alt-16x16.png') }
+.checkIcon		{ background-image: url('../img/icons_b/16x16/Check-16x16.png') }
+.deleteIcon		{ background-image: url('../img/icons_b/16x16/Delete-16x16.png') }
+.eyeIcon		{ background-image: url('../img/icons_b/16x16/Eye-16x16.png') }
+.documentIcon	{ background-image: url('../img/icons_b/16x16/Document-16x16.png') }
+.editIcon		{ background-image: url('../img/icons_b/16x16/Edit-16x16.png') }
+.rateIcon		{ background-image: url('../img/icons_b/16x16/Rate-16x16.png') }
+.refreshIcon	{ background-image: url('../img/icons_b/16x16/Refresh-16x16.png') }
+.splitIcon		{ background-image: url('../img/icons_b/16x16/Split-16x16.png') }
+.userIcon		{ background-image: url('../img/icons_b/16x16/User-16x16.png') }
+
