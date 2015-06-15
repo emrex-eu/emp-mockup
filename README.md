@@ -3,10 +3,6 @@ A mockup of an NCP, can be used to test clients
 
 install sbt first
 
-It depends on another project funScala. Checkout funScala and run
-sbt publishLocal
-to install the necessary dependency
-
 To start the server:
 sbt run
 
