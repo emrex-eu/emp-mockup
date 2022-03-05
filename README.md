@@ -1,4 +1,4 @@
-EMP Mockup (a scala play application)
+EMP Mockup (a Scala play application)
 =====================================
 
 A mockup of an EMP which can be used to test clients
@@ -10,8 +10,7 @@ To start the server:
 sbt run
 ```
 
-
-Documentation of how an EMP should work is [here](https://github.com/emrex-eu/standard).
+Documentation of how an EMP should work is [here](https://github.com/emrex-eu/standard/blob/documentation/pages/technical-guide.md).
 
 This application can be used to test the EMREX Client.
 There is an elmo_example.xml in conf file that simulates a result from a result service.

@@ -1,22 +1,19 @@
-@(name: String) 
-
-	<div id="bar-wrap">
-		<div id="bar">
-			<div style="float: right;">
-				@droppDown("""<img title="Logget inn" src="""+routes.Assets.at("resources/img/icons_d/24x24/User-24x24.png")+""" />"""+name) {
-					<ul>
-						<li>
-							<a href="logout">Logg ut</a>
-						</li>
-					</ul>
-				}
-			</div>
-		</div>
-	</div>
-	<script>
-		jQuerySun(window).ready(function() {
-			jQuerySun('.dropdown-link img').addClass('iconHover');
-		});
-	</script>
-
-
+@(name: String)
+<div id="bar-wrap">
+  <div id="bar">
+    <div style="float: right;">
+      @droppDown("""<img title="Logget inn" src="""+routes.Assets.at(" resources/img/icons_d/24x24/User-24x24.png")+""" />"""+name) {
+      <ul>
+        <li>
+          <a href="logout">Logg ut</a>
+        </li>
+      </ul>
+      }
+    </div>
+  </div>
+</div>
+<script>
+  jQuerySun(window).ready(function () {
+    jQuerySun('.dropdown-link img').addClass('iconHover');
+  });
+</script>

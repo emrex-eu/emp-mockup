@@ -1,22 +1,18 @@
 @(loggedIn: Boolean, name: String, elmoXML: String, sessionId: String, returnUrl: String)
 
-
-
 @main.default(
-	name,
-	loggedIn
+name,
+loggedIn
 ) {
 <form action="@returnUrl" method="POST">
-	<input type="hidden" name="sessionId" value="@sessionId"/>
-	<input type="hidden" id="elmo" name="elmo" value="@elmoXML"/>
-	<div id="results"></div>
-	<script type="text/javascript">
-		jQuerySun(document).ready(function() {
-			displayXml(true, '12345678901');		
-		})
-	</script>
-	<input type="submit" name="Send data" value="Send data" class="green large"/>
+  <input type="hidden" name="sessionId" value="@sessionId" />
+  <input type="hidden" id="elmo" name="elmo" value="@elmoXML" />
+  <div id="results"></div>
+  <script type="text/javascript">
+    jQuerySun(document).ready(function () {
+      displayXml(true, '12345678901');
+    })
+  </script>
+  <input type="submit" name="Send data" value="Send data" class="green large" />
 </form>
-    
 }
-
