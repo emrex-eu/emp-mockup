@@ -55,7 +55,6 @@ public class Base64Coder {
             map2[map1[i]] = (byte) i;
     }
 
-
     /**
      * Encodes a string into Base64 format. No blanks or line breaks are inserted.
      * 
@@ -79,7 +78,6 @@ public class Base64Coder {
     public static String encodeLines(byte[] in) {
         return encodeLines(in, 0, in.length, 76, systemLineSeparator);
     }
-
 
     /**
      * Encodes a byte array into Base 64 format and breaks the output into lines.
@@ -113,7 +111,6 @@ public class Base64Coder {
         return buf.toString();
     }
 
-
     /**
      * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
      * 
@@ -124,7 +121,6 @@ public class Base64Coder {
     public static char[] encode(byte[] in) {
         return encode(in, 0, in.length);
     }
-
 
     /**
      * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
@@ -138,7 +134,6 @@ public class Base64Coder {
     public static char[] encode(byte[] in, int iLen) {
         return encode(in, 0, iLen);
     }
-
 
     /**
      * Encodes a byte array into Base64 format. No blanks or line breaks are inserted in the output.
@@ -176,7 +171,6 @@ public class Base64Coder {
         return out;
     }
 
-
     /**
      * Decodes a string from Base64 format. No blanks or line breaks are allowed within the Base64 encoded input data.
      * 
@@ -189,7 +183,6 @@ public class Base64Coder {
     public static String decodeString(String s) {
         return new String(decode(s));
     }
-
 
     /**
      * Decodes a byte array from Base64 format and ignores line separators, tabs and blanks. CR, LF, Tab and Space
@@ -213,7 +206,6 @@ public class Base64Coder {
         return decode(buf, 0, p);
     }
 
-
     /**
      * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64 encoded input
      * data.
@@ -228,7 +220,6 @@ public class Base64Coder {
         return decode(s.toCharArray());
     }
 
-
     /**
      * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64 encoded input
      * data.
@@ -242,7 +233,6 @@ public class Base64Coder {
     public static byte[] decode(char[] in) {
         return decode(in, 0, in.length);
     }
-
 
     /**
      * Decodes a byte array from Base64 format. No blanks or line breaks are allowed within the Base64 encoded input
@@ -292,7 +282,6 @@ public class Base64Coder {
         }
         return out;
     }
-
 
     // Dummy constructor.
     private Base64Coder() {

@@ -1,29 +1,29 @@
 @(loginForm: Form[User])(implicit flash: Flash)
 
-
 @import helper._
 
 @main.default("", false) {
-  <script>
-    window.onload = function() {
-       //$("#").focus()
-    }
-  </script>
-  <style>
-	dd{ margin-left: 0;}
-	dl{margin: 0}
-  </style>
-  @flash.get("fail")
-  
-  
-    @helper.form(action = routes.Login.loginUser()) {
- 		@helper.inputText(loginForm("givenNames"),'_label->"Given names")
- 		@helper.inputText(loginForm("familyName"),'_label->"Family name")
- 		@helper.inputText(loginForm("birthDate"),'_label->"Birth date (dd-mm-yyyy)")
- 		@helper.inputText(loginForm("gender"),'_label-> "Gender")
+<script>
+  window.onload = function () {
+    //$("#").focus()
+  }
+</script>
+<style>
+  dd {
+    margin-left: 0;
+  }
 
-		<input type="submit" value="Login" name="Login" class="green large">
-	} 
-		
-  		
+  dl {
+    margin: 0
+  }
+</style>
+@flash.get("fail")
+@helper.form(action = routes.Login.loginUser()) {
+@helper.inputText(loginForm("givenNames"),'_label->"Given names")
+@helper.inputText(loginForm("familyName"),'_label->"Family name")
+@helper.inputText(loginForm("birthDate"),'_label->"Birth date (dd-mm-yyyy)")
+@helper.inputText(loginForm("gender"),'_label-> "Gender")
+
+<input type="submit" value="Login" name="Login" class="green large">
+}
 }

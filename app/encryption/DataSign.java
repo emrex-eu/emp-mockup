@@ -43,15 +43,15 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-
 public class DataSign {
 
     private final Logger logger = LoggerFactory.getLogger(DataSign.class);
 
-	public String getSignedElmo(DataResponse dataResp) throws Exception  {
-	    String signedElmo = sign(dataResp.certificate(), dataResp.encKey(), dataResp.data());
-	    return signedElmo;
-	}
+    public String getSignedElmo(DataResponse dataResp) throws Exception  {
+        String signedElmo = sign(dataResp.certificate(), dataResp.encKey(), dataResp.data());
+        return signedElmo;
+    }
+
     private static X509Certificate getCertificate(String certString) throws IOException, GeneralSecurityException {
         InputStream is = new ByteArrayInputStream(certString.getBytes());
         CertificateFactory cf = CertificateFactory.getInstance("X.509");
@@ -59,7 +59,6 @@ public class DataSign {
         is.close();
         return cert;
     }
-
 
     private String sign(String certificate, String encKey, String data) throws Exception {
         // Create a DOM XMLSignatureFactory that will be used to generate the enveloped signature.
@@ -69,8 +68,7 @@ public class DataSign {
         // document, so a URI of "" signifies that, and also specify the SHA1 digest algorithm
         // and the ENVELOPED Transform.
         Reference ref = fac.newReference("", fac.newDigestMethod(DigestMethod.SHA1, null),
-            Collections.singletonList(
-                fac.newTransform(Transform.ENVELOPED, (TransformParameterSpec) null)), null, null);
+            Collections.singletonList(fac.newTransform(Transform.ENVELOPED, (TransformParameterSpec) null)), null, null);
 
         // Create the SignedInfo.
         SignedInfo si = fac.newSignedInfo(fac.newCanonicalizationMethod
@@ -113,7 +111,6 @@ public class DataSign {
         trans.transform(new DOMSource(doc), new StreamResult(os));
         return os.toString();
     }
-
 
     public boolean verifySignature(String certificate, String data) throws Exception {
         // Create a DOM XMLSignatureFactory that will be used to generate the enveloped signature.
@@ -158,5 +155,4 @@ public class DataSign {
 
         return coreValidity;
     }
-
 }

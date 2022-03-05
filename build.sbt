@@ -1,5 +1,4 @@
-
-name := """NCP Mockup"""
+name := """EMP Mockup"""
 
 version := "1.0-SNAPSHOT"
 
